@@ -3,11 +3,13 @@ import os
 import json
 import argparse
 import tqdm
+import sys
 
 from pydantic import BaseModel
 from octotools.engine.openai import ChatOpenAI
 
-from tasks.utils import ResultAnalyzer
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+from utils import ResultAnalyzer
 
 class ResultScorer:
     def __init__(self, llm_engine=None):

@@ -4,10 +4,10 @@
 PROJECT_DIR="./"
 
 ############
-LABEL="octotools"
+LABEL="octotools_base"
 
 THREADS=8
-TASK="gaia-text"
+TASK="bamboogle"
 DATA_FILE="$TASK/data/data.json"
 LOG_DIR="$TASK/logs/$LABEL"
 OUT_DIR="$TASK/results/$LABEL"
@@ -15,14 +15,14 @@ CACHE_DIR="$TASK/cache"
 
 LLM="gpt-4o"
 
-ENABLED_TOOLS="Python_Code_Generator_Tool,Google_Search_Tool,Wikipedia_Knowledge_Searcher_Tool,URL_Text_Extractor_Tool,Generalist_Solution_Generator_Tool"
+ENABLED_TOOLS="Generalist_Solution_Generator_Tool"
 ############
 
 cd $PROJECT_DIR
 mkdir -p $LOG_DIR
 
 # Define the array of specific indices
-indices=($(seq 0 126))
+indices=($(seq 0 124))
 
 # Skip indices if the output file already exists
 new_indices=()

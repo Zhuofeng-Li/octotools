@@ -244,7 +244,7 @@ class Solver:
                 context_verification, conclusion = self.planner.extract_conclusion(stop_verification)
                 
                 if self.verbose:
-                    print(f"\n## [{step_count}] Stopping Verification:")
+                    print(f"\n## [{step_count}] Stopping Verification:") # TODO: check here
                     print("#"*50)
                     print(f"{context_verification}")
                     print("#"*50)
@@ -312,6 +312,7 @@ class Solver:
 def parse_arguments():
     parser = argparse.ArgumentParser(description="Run the octotools demo with specified parameters.")
     parser.add_argument("--llm_engine_name", default="gpt-4o", help="LLM engine name.")
+    parser.add_argument("--tool_llm_engine_name", default="gpt-4o", help="Tool LLM engine name.")
     parser.add_argument("--max_tokens", type=int, default=4000, help="Maximum tokens for LLM generation.")
     parser.add_argument("--run_baseline_only", type=bool, default=False, help="Run only the baseline (no toolbox).")
     parser.add_argument("--task", default="minitoolbench", help="Task to run.")
@@ -339,7 +340,8 @@ def main(args):
     # Instantiate Initializer
     initializer = Initializer(
         enabled_tools=enabled_tools,
-        model_string=args.llm_engine_name
+        model_string=args.llm_engine_name,
+        tool_model_string=args.tool_llm_engine_name
     )
 
     # Instantiate Planner
@@ -355,7 +357,8 @@ def main(args):
     # Instantiate Executor
     executor = Executor(
         llm_engine_name=args.llm_engine_name,
-        root_cache_dir=args.root_cache_dir
+        root_cache_dir=args.root_cache_dir,
+        tool_llm_engine_name=args.tool_llm_engine_name
     )
 
     # Instantiate Solver

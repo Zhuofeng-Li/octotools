@@ -6,12 +6,13 @@ import traceback
 from typing import Dict, Any, List, Tuple
 import time
 class Initializer:
-    def __init__(self, enabled_tools: List[str] = [], model_string: str = None, verbose: bool = False, vllm_config_path: str = None):
+    def __init__(self, enabled_tools: List[str] = [], model_string: str = None, verbose: bool = False, vllm_config_path: str = None, **kwargs):
         self.toolbox_metadata = {}
         self.available_tools = []
         self.enabled_tools = enabled_tools
         self.load_all = self.enabled_tools == ["all"]
         self.model_string = model_string # llm model string
+        self.tool_model_string = kwargs.get("tool_model_string") if kwargs.get("tool_model_string") else model_string
         self.verbose = verbose
         self.vllm_server_process = None
         self.vllm_config_path = vllm_config_path
@@ -68,7 +69,7 @@ class Initializer:
                             try:
                                 # Check if the tool requires an LLM engine
                                 if hasattr(obj, 'require_llm_engine') and obj.require_llm_engine:
-                                    tool_instance = obj(model_string=self.model_string)
+                                    tool_instance = obj(model_string=self.tool_model_string)
                                 else:
                                     tool_instance = obj()
                                 
@@ -108,7 +109,10 @@ class Initializer:
                 tool_class = getattr(module, tool_name)
 
                 # Instantiate the tool
-                tool_instance = tool_class()
+                if hasattr(tool_class, 'require_llm_engine') and tool_class.require_llm_engine:
+                    tool_instance = tool_class(model_string=self.tool_model_string)
+                else:
+                    tool_instance = tool_class()
 
                 # FIXME This is a temporary workaround to avoid running demo commands
                 self.available_tools.append(tool_name)

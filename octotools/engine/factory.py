@@ -12,6 +12,20 @@ def create_llm_engine(model_string: str, use_cache: bool = False, is_multimodal:
         from .anthropic import ChatAnthropic
         return ChatAnthropic(model_string=model_string, use_cache=use_cache, is_multimodal=is_multimodal, **kwargs)
     
+    elif "sonar" in model_string:
+        from .perplexity import ChatPerplexity
+        return ChatPerplexity(model_string=model_string, use_cache=use_cache, is_multimodal=is_multimodal, **kwargs)
+
+    elif "agent" in model_string:
+        from .vllm_tool import ChatToolVLLM
+        model_string = model_string.replace("agent-", "")
+        return ChatToolVLLM(model_string=model_string, use_cache=use_cache, is_multimodal=is_multimodal, **kwargs)
+
+    elif "dashscope" in model_string:
+        from .qwen import ChatQwen
+        model_string = model_string.replace("dashscope-", "")
+        return ChatQwen(model_string=model_string, use_cache=use_cache, is_multimodal=is_multimodal, **kwargs)
+    
     elif any(x in model_string for x in ["deepseek-chat", "deepseek-reasoner"]):
         from .deepseek import ChatDeepseek
         return ChatDeepseek(model_string=model_string, use_cache=use_cache, is_multimodal=is_multimodal, **kwargs)

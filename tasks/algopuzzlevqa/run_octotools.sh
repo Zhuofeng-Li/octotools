@@ -13,7 +13,7 @@ LOG_DIR="$TASK/logs/$LABEL"
 OUT_DIR="$TASK/results/$LABEL"
 CACHE_DIR="$TASK/cache"
 
-LLM="gpt-4o-mini"
+LLM="gpt-4o"
 
 ENABLED_TOOLS="Text_Detector_Tool,Image_Captioner_Tool,Generalist_Solution_Generator_Tool"
 ############
