@@ -25,7 +25,7 @@ class ResultScorer:
         self.llm_engine = llm_engine or ChatOpenAI(model_string="gpt-4o", is_multimodal=False, enable_cache=True)
         print(f"\nLocal OpenAI engine {self.llm_engine.model_string} initialized.\n")
 
-    def answer_verification(self, question, response, correct_answer): # TODO: check prompt 
+    def answer_verification(self, question, response, correct_answer): 
         query_prompt = f"""
         Given a Question and its Golden Answer, verify whether the Predicted Answer is correct. The prediction is correct if it fully aligns with the meaning and key information of the Golden Answer. Respond with True if the prediction is correct and False otherwise.
 

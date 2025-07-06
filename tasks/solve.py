@@ -178,16 +178,15 @@ class Solver:
                     step_count, 
                     self.max_steps
                 )
-                context, sub_goal, tool_name = self.planner.extract_context_subgoal_and_tool(next_step)
+                tool_name, command = self.planner.extract_context_tool_and_command(next_step)
 
                 if self.verbose:
                     print(f"\n## [{step_count}] Next Step:")
                     print("#"*50)
                     print(f"Next Step:\n{next_step}")
                     print("#"*50)
-                    print(f"\n==>Extracted Context:\n{context}")
-                    print(f"\n==>Extracted Sub-goal:\n{sub_goal}\n")
                     print(f"\n==>Extracted Tool:\n{tool_name}")
+                    print(f"\n==>Extracted Tool Command:\n{command}")
 
                 if tool_name is None or tool_name not in self.planner.available_tools:
                     print(f"Error: Tool '{tool_name}' is not available or not found.")
@@ -195,23 +194,23 @@ class Solver:
                     result = "Not result is generated due to the tool not found."
 
                 else:
-                    # Generate the tool command
-                    tool_command = self.executor.generate_tool_command(
-                        question, 
-                        image_path, 
-                        context, 
-                        sub_goal, 
-                        tool_name, 
-                        self.planner.toolbox_metadata[tool_name]
-                    )
-                    analysis, explanation, command = self.executor.extract_explanation_and_command(tool_command)
+                    # # Generate the tool command
+                    # tool_command = self.executor.generate_tool_command(
+                    #     question, 
+                    #     image_path, 
+                    #     context, 
+                    #     sub_goal, 
+                    #     tool_name, 
+                    #     self.planner.toolbox_metadata[tool_name]
+                    # )
+                    # analysis, explanation, command = self.executor.extract_explanation_and_command(tool_command)
                     
-                    if self.verbose:
-                        print(f"\n## [{step_count}] Tool Command:")
-                        print("#"*50)
-                        print(f"{tool_command}")
-                        print("#"*50)
-                        print(f"\n==>Extracted Command:\n{command}\n")
+                    # if self.verbose:
+                    #     print(f"\n## [{step_count}] Tool Command:")
+                    #     print("#"*50)
+                    #     print(f"{tool_command}")
+                    #     print("#"*50)
+                    #     print(f"\n==>Extracted Command:\n{command}\n")
 
                     # Execute the tool command
                     result = self.executor.execute_tool_command(tool_name, command)
@@ -231,7 +230,7 @@ class Solver:
                     print(f"Execution time for step {step_count}: {execution_time_step:.2f} seconds")
 
                 # Update memory
-                self.memory.add_action(step_count, tool_name, sub_goal, command, result)
+                self.memory.add_action(step_count, tool_name, None, command, result)
                 memeory_actions = self.memory.get_actions()
 
                 # Verify memory
@@ -244,7 +243,7 @@ class Solver:
                 context_verification, conclusion = self.planner.extract_conclusion(stop_verification)
                 
                 if self.verbose:
-                    print(f"\n## [{step_count}] Stopping Verification:") # TODO: check here
+                    print(f"\n## [{step_count}] Stopping Verification:")
                     print("#"*50)
                     print(f"{context_verification}")
                     print("#"*50)
@@ -312,7 +311,8 @@ class Solver:
 def parse_arguments():
     parser = argparse.ArgumentParser(description="Run the octotools demo with specified parameters.")
     parser.add_argument("--llm_engine_name", default="gpt-4o", help="LLM engine name.")
-    parser.add_argument("--tool_llm_engine_name", default="gpt-4o", help="Tool LLM engine name.")
+    parser.add_argument("--action_llm_engine_name", default=None, help="Action LLM engine name.")
+    parser.add_argument("--tool_llm_engine_name", default=None, help="Tool LLM engine name.")
     parser.add_argument("--max_tokens", type=int, default=4000, help="Maximum tokens for LLM generation.")
     parser.add_argument("--run_baseline_only", type=bool, default=False, help="Run only the baseline (no toolbox).")
     parser.add_argument("--task", default="minitoolbench", help="Task to run.")
@@ -341,12 +341,14 @@ def main(args):
     initializer = Initializer(
         enabled_tools=enabled_tools,
         model_string=args.llm_engine_name,
-        tool_model_string=args.tool_llm_engine_name
+        tool_model_string=args.tool_llm_engine_name,
+        action_model_string=args.action_llm_engine_name
     )
 
     # Instantiate Planner
     planner = Planner(
         llm_engine_name=args.llm_engine_name,
+        action_llm_engine_name=args.action_llm_engine_name,
         toolbox_metadata=initializer.toolbox_metadata,
         available_tools=initializer.available_tools,
     )

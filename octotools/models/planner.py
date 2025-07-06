@@ -2,16 +2,20 @@ import os
 import re
 from PIL import Image
 from typing import Dict, Any, List, Tuple
+import json
+import ast
 
 from octotools.engine.factory import create_llm_engine
 from octotools.models.memory import Memory
 from octotools.models.formatters import QueryAnalysis, NextStep, MemoryVerification
+from octotools.default_prompts import SYSTEM_PROMPT, USER_PROMPT, SYSTEM_PROMPT_TOOL_N1, USER_PROMPT_TOOL_N1
 
 class Planner:
-    def __init__(self, llm_engine_name: str, toolbox_metadata: dict = None, available_tools: List = None, verbose: bool = False):
+    def __init__(self, llm_engine_name: str, toolbox_metadata: dict = None, available_tools: List = None, verbose: bool = False, **kwargs):
         self.llm_engine_name = llm_engine_name
         self.llm_engine_mm = create_llm_engine(model_string=llm_engine_name, is_multimodal=True)
         self.llm_engine = create_llm_engine(model_string=llm_engine_name, is_multimodal=False)
+        self.action_llm_engine = create_llm_engine(model_string=kwargs.get("action_llm_engine_name", llm_engine_name), is_multimodal=False)
         self.toolbox_metadata = toolbox_metadata if toolbox_metadata is not None else {}
         self.available_tools = available_tools if available_tools is not None else []
         self.verbose = verbose
@@ -85,9 +89,83 @@ Please present your analysis in a clear, structured format.
             except Exception as e:
                 print(f"Error reading image file: {str(e)}")
 
-        self.query_analysis = self.llm_engine_mm(input_data, response_format=QueryAnalysis)
-
+        # self.query_analysis = self.llm_engine_mm(input_data, response_format=QueryAnalysis)
+        self.query_analysis = ""
+        print(f"[DEBUG] query_analysis: {self.query_analysis}")
         return str(self.query_analysis).strip()
+
+    def extract_context_tool_and_command(self, response: Any) -> Tuple[str, str]:
+        # NOTE: currently, only one function call is supported
+
+        def extract_tool_call(tool_call_str: str) -> str:
+            pattern = r'<tool_call>(.*?)</tool_call>'
+            match = re.search(pattern, tool_call_str, flags=re.DOTALL)
+            if not match:
+                return None
+            last_match = match.group(match.lastindex).strip()
+            return last_match
+
+        def parse_tool_call(tool_call_str: str) -> dict:
+            """
+            parse the tool call string into a dictionary. We support the following three tool call formats:
+            1. '[Perplexity_Tool(prompt="Who is the father of Galileo Galilei?")]'
+            2. "Perplexity_Tool(prompt="Who is the father of Galileo Galilei?")"
+            3. "{'name': 'Perplexity_Tool', 'arguments': {'prompt': 'Who is the father of Galileo Galilei?'}}"
+            """
+            s = tool_call_str.strip()
+            # remove "[ ]" from the beginning and end of the string
+            s = re.sub(r'^\[|\]$', '', s)
+            try:
+                # 解析为 AST
+                tree = ast.parse(s, mode='eval')
+                if not isinstance(tree.body, ast.Call):
+                    raise ValueError("Input is not a function call.")
+
+                func_name = tree.body.func.id
+                args_dict = {}
+
+                for kw in tree.body.keywords:
+                    # 把每个参数的值转为真实 Python 值
+                    args_dict[kw.arg] = ast.literal_eval(kw.value)
+
+                return {
+                    "name": func_name,
+                    "arguments": args_dict
+                }
+
+            except Exception as e:
+                raise ValueError(f"Failed to parse function call: {e}")
+        
+        print(f"[DEBUG] Response: {response}") # TODO: remove this
+        tool_call_str = extract_tool_call(response)
+        if tool_call_str is None:
+            return None, None
+        try:
+            function_calls = [json.loads(tool_call_str)]
+        except json.JSONDecodeError:
+            # parsing such function call: ```Perplexity_Tool(prompt="abc")```
+            function_calls = [parse_tool_call(tool_call_str)] # TODO: update catch exception
+        except Exception as e: 
+            print(f"Response: {response}")
+            print(f"Error extracting tool and command: {str(e)}")
+            raise e # TODO: update here
+            # return None, None
+
+        print(f"[DEBUG] Function calls: {function_calls}") # TODO: remove this
+        if len(function_calls[0]) == 0 or function_calls[0].get("name") == "":
+            return None, None
+
+        tool_list = []
+        execution_list = []
+        for func_call in function_calls:
+            name = func_call["name"]
+            tool_list.append(name)
+            arguments = func_call["arguments"]
+            execution_list.append(
+                f"execution = tool.execute({','.join([f'{k}={repr(v)}' for k,v in arguments.items()])})"
+            )
+            
+        return tool_list[0], execution_list[0]
 
     def extract_context_subgoal_and_tool(self, response: Any) -> Tuple[str, str, str]:
 
@@ -124,77 +202,34 @@ Please present your analysis in a clear, structured format.
         return context, sub_goal, tool_name
         
     def generate_next_step(self, question: str, image: str, query_analysis: str, memory: Memory, step_count: int, max_step_count: int) -> Any:
-        prompt_generate_next_step = f"""
-Task: Determine the optimal next step to address the given query based on the provided analysis, available tools, and previous steps taken.
-
-Context:
-Query: {question}
-Image: {image}
-Query Analysis: {query_analysis}
-
-Available Tools:
-{self.available_tools}
-
-Tool Metadata:
-{self.toolbox_metadata}
-
-Previous Steps and Their Results:
-{memory.get_actions()}
-
-Current Step: {step_count} in {max_step_count} steps
-Remaining Steps: {max_step_count - step_count}
-
-Instructions:
-1. Analyze the context thoroughly, including the query, its analysis, any image, available tools and their metadata, and previous steps taken.
-
-2. Determine the most appropriate next step by considering:
-   - Key objectives from the query analysis
-   - Capabilities of available tools
-   - Logical progression of problem-solving
-   - Outcomes from previous steps
-   - Current step count and remaining steps
-
-3. Select ONE tool best suited for the next step, keeping in mind the limited number of remaining steps.
-
-4. Formulate a specific, achievable sub-goal for the selected tool that maximizes progress towards answering the query.
-
-Response Format:
-Your response MUST follow this structure:
-1. Justification: Explain your choice in detail.
-2. Context, Sub-Goal, and Tool: Present the context, sub-goal, and the selected tool ONCE with the following format:
-
-Context: <context>
-Sub-Goal: <sub_goal>
-Tool Name: <tool_name>
-
-Where:
-- <context> MUST include ALL necessary information for the tool to function, structured as follows:
-  * Relevant data from previous steps
-  * File names or paths created or used in previous steps (list EACH ONE individually)
-  * Variable names and their values from previous steps' results
-  * Any other context-specific information required by the tool
-- <sub_goal> is a specific, achievable objective for the tool, based on its metadata and previous outcomes.
-It MUST contain any involved data, file names, and variables from Previous Steps and Their Results that the tool can act upon.
-- <tool_name> MUST be the exact name of a tool from the available tools list.
-
-Rules:
-- Select only ONE tool for this step.
-- The sub-goal MUST directly address the query and be achievable by the selected tool.
-- The Context section MUST include ALL necessary information for the tool to function, including ALL relevant file paths, data, and variables from previous steps.
-- The tool name MUST exactly match one from the available tools list: {self.available_tools}.
-- Avoid redundancy by considering previous steps and building on prior results.
-- Your response MUST conclude with the Context, Sub-Goal, and Tool Name sections IN THIS ORDER, presented ONLY ONCE.
-- Include NO content after these three sections.
-
-Example (do not copy, use only as reference):
-Justification: [Your detailed explanation here]
-Context: Image path: "example/image.jpg", Previous detection results: [list of objects]
-Sub-Goal: Detect and count the number of specific objects in the image "example/image.jpg"
-Tool Name: Object_Detector_Tool
-
-Remember: Your response MUST end with the Context, Sub-Goal, and Tool Name sections, with NO additional content afterwards.
-"""
-        next_step = self.llm_engine(prompt_generate_next_step, response_format=NextStep)
+        # TODO: add more model prompts
+        if "tool-n1-reason" in self.action_llm_engine.model_string:
+            system_prompt = SYSTEM_PROMPT_TOOL_N1.format(
+                question=question,
+                image=image,
+                query_analysis=query_analysis,
+                available_tools=self.available_tools,
+                toolbox_metadata=self.toolbox_metadata,
+                memory=memory.get_actions(),
+                step_count=step_count,
+                max_step_count=max_step_count,
+                remaining_steps=max_step_count - step_count
+            )
+            prompt_generate_next_step = USER_PROMPT_TOOL_N1.format(question=question)
+        else:
+            system_prompt = SYSTEM_PROMPT
+            prompt_generate_next_step = USER_PROMPT.format(
+                question=question,
+                image=image,
+                query_analysis=query_analysis,
+                available_tools=self.available_tools,
+                toolbox_metadata=self.toolbox_metadata,
+                memory=memory.get_actions(),
+                step_count=step_count,
+                max_step_count=max_step_count,
+                remaining_steps=max_step_count - step_count
+            )
+        next_step = self.action_llm_engine(prompt_generate_next_step, system_prompt=system_prompt)
         return next_step
 
     def verificate_context(self, question: str, image: str, query_analysis: str, memory: Memory) -> Any:

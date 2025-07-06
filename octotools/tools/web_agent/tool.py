@@ -103,7 +103,7 @@ class Web_Agent_Tool(BaseTool):
                 },
             ],
         )
-        self.llm_engine = create_llm_engine(model_string="agent-Qwen/Qwen2.5-7B-Instruct", is_multimodal=False) if model_string else None # TODO: update parameter
+        self.llm_engine = create_llm_engine(model_string="agent-Qwen/Qwen2.5-7B-Instruct", is_multimodal=False) if model_string else None
         self.llm_engine.stop = ["</answer>", "</search>", "</search>\n", "</search>\n\n"]
         self.tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen2.5-7B-Instruct")  
         self.turn = 2 
@@ -159,7 +159,7 @@ class Web_Agent_Tool(BaseTool):
                     query = self.parse_query(content)
                     result = self.search(query) if query else None 
                     messages.append({"role": "tool", "content": f"<information>{result}</information>"})
-            print("\n\n", messages)
+            print("Whole messages \n", messages)
             response = self.tokenizer.apply_chat_template(messages, add_generation_prompt=False, tokenize=False)
             answer = response
             # answer = self.parse_answer(response)

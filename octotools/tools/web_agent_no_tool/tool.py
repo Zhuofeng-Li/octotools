@@ -25,7 +25,7 @@
 #                 },
 #             ],
 #         )
-#         self.llm_engine = create_llm_engine(model_string="qwen2.5-7b-instruct", is_multimodal=False) if model_string else None # TODO: update parameter
+#         self.llm_engine = create_llm_engine(model_string="qwen2.5-7b-instruct", is_multimodal=False) if model_string else None 
 
 #     def execute(self, prompt="Describe this image in detail."):
 #         try:

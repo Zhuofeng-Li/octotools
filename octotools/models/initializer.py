@@ -12,6 +12,7 @@ class Initializer:
         self.enabled_tools = enabled_tools
         self.load_all = self.enabled_tools == ["all"]
         self.model_string = model_string # llm model string
+        self.action_model_string = kwargs.get("action_model_string") if kwargs.get("action_model_string") else model_string
         self.tool_model_string = kwargs.get("tool_model_string") if kwargs.get("tool_model_string") else model_string
         self.verbose = verbose
         self.vllm_server_process = None
@@ -19,11 +20,13 @@ class Initializer:
         print("\n==> Initializing octotools...")
         print(f"Enabled tools: {self.enabled_tools}")
         print(f"LLM engine name: {self.model_string}")
+        print(f"Action LLM engine name: {self.action_model_string}")
+        print(f"Tool LLM engine name: {self.tool_model_string}")
         self._set_up_tools()
         
-        # if vllm, set up the vllm server
-        if model_string.startswith("vllm-"):
-            self.setup_vllm_server()
+        # # if vllm, set up the vllm server
+        # if model_string.startswith("vllm-"):
+        #     self.setup_vllm_server()
 
     def get_project_root(self):
         current_dir = os.path.dirname(os.path.abspath(__file__))

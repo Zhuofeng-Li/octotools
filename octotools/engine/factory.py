@@ -20,6 +20,11 @@ def create_llm_engine(model_string: str, use_cache: bool = False, is_multimodal:
         from .vllm_tool import ChatToolVLLM
         model_string = model_string.replace("agent-", "")
         return ChatToolVLLM(model_string=model_string, use_cache=use_cache, is_multimodal=is_multimodal, **kwargs)
+    
+    elif "action" in model_string:
+        from .vllm_action import ChatActionVLLM
+        model_string = model_string.replace("action-", "")
+        return ChatActionVLLM(model_string=model_string, use_cache=use_cache, is_multimodal=is_multimodal, **kwargs)
 
     elif "dashscope" in model_string:
         from .qwen import ChatQwen
