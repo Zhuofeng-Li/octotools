@@ -1,6 +1,5 @@
 import os
 from octotools.tools.base import BaseTool
-from octotools.tools.google_search.tool import Google_Search_Tool
 from octotools.engine.factory import create_llm_engine
 from transformers import AutoTokenizer
 import requests
@@ -13,7 +12,8 @@ import re
 # You can search as many times as your want. \
 # If you find no further external knowledge needed, you can directly provide the answer inside <answer> and </answer>, without detailed illustrations. For example, <answer> Beijing </answer>. Question:"""
 
-REASONING_PREFIX = f"""Answer the given question. \
+# TODO: summary mechanism needed
+REASONING_SUMMARY_PREFIX = f"""Answer the given question. \
 You must conduct reasoning inside <think> and </think> first every time you get new information. \
 After reasoning, if you find you lack some knowledge, you can call a search engine by <search> query </search> and it will return the top searched results between <information> and </information>. \
 You can search as many times as your want. \
@@ -21,64 +21,64 @@ Once you have enough information, you must include the final answer together wit
 The emperor of Japan during World War I was Emperor Taishō, who reigned from 1912 to 1926. Historical records show that his biological mother was Yanagihara Naruko, a concubine of Emperor Meiji. Therefore, based on this lineage, the mother of the emperor during World War I was Yanagihara Naruko.
 </answer> Question:"""
 
-# class Google_Search():
-#     def __init__(self):
-#         # self.api_key = os.getenv("GOOGLE_API_KEY")
-#         self.api_key = os.getenv("GOOGLE_API_KEY") # NOTE: Replace with your own API key (Ref: https://developers.google.com/custom-search/v1/introduction)
-#         self.cx = os.getenv("GOOGLE_CX") # NOTE: Replace with your own custom search (Ref: https://programmablesearchengine.google.com/controlpanel/all)
-#         self.base_url = "https://www.googleapis.com/customsearch/v1"
+class Google_Search():
+    def __init__(self):
+        # self.api_key = os.getenv("GOOGLE_API_KEY")
+        self.api_key = os.getenv("GOOGLE_API_KEY") # NOTE: Replace with your own API key (Ref: https://developers.google.com/custom-search/v1/introduction)
+        self.cx = os.getenv("GOOGLE_CX") # NOTE: Replace with your own custom search (Ref: https://programmablesearchengine.google.com/controlpanel/all)
+        self.base_url = "https://www.googleapis.com/customsearch/v1"
 
-#     def google_search(self, query: str, num_results: int = 10) -> Dict[str, Any]:
-#         """
-#         Performs a Google search using the provided query.
+    def google_search(self, query: str, num_results: int = 10) -> Dict[str, Any]:
+        """
+        Performs a Google search using the provided query.
 
-#         Parameters:
-#             query (str): The search query.
-#             num_results (int): The number of search results to return.
+        Parameters:
+            query (str): The search query.
+            num_results (int): The number of search results to return.
 
-#         Returns:
-#             Dict[str, Any]: The raw search results from the Google API.
-#         """
-#         params = {
-#             'q': query,
-#             'key': self.api_key,
-#             'cx': self.cx,
-#             'num': num_results
-#         }
+        Returns:
+            Dict[str, Any]: The raw search results from the Google API.
+        """
+        params = {
+            'q': query,
+            'key': self.api_key,
+            'cx': self.cx,
+            'num': num_results
+        }
         
-#         response = requests.get(self.base_url, params=params)
-#         return response.json()
+        response = requests.get(self.base_url, params=params)
+        return response.json()
 
-#     def execute(self, query: str, num_results: int = 10) -> List[Dict[str, Any]]:
-#         """
-#         Executes a Google search based on the provided query.
+    def execute(self, query: str, num_results: int = 10) -> List[Dict[str, Any]]:
+        """
+        Executes a Google search based on the provided query.
 
-#         Parameters:
-#             query (str): The search query.
-#             num_results (int): The number of search results to return (default: 10).
+        Parameters:
+            query (str): The search query.
+            num_results (int): The number of search results to return (default: 10).
 
-#         Returns:
-#             List[Dict[str, Any]]: A list of dictionaries containing search result information.
-#         """
-#         if not self.api_key:
-#             return [{"error": "Google API key is not set. Please set the GOOGLE_API_KEY environment variable."}]
+        Returns:
+            List[Dict[str, Any]]: A list of dictionaries containing search result information.
+        """
+        if not self.api_key:
+            return [{"error": "Google API key is not set. Please set the GOOGLE_API_KEY environment variable."}]
 
-#         try:
-#             results = self.google_search(query, num_results)
+        try:
+            results = self.google_search(query, num_results)
             
-#             if 'items' in results:
-#                 return [
-#                     {
-#                         "title": item['title'],
-#                         "link": item['link'],
-#                         "snippet": item['snippet']
-#                     }
-#                     for item in results['items']
-#                 ]
-#             else:
-#                 return [{"error": "No results found."}]
-#         except Exception as e:
-#             return [{"error": f"An error occurred: {str(e)}"}]
+            if 'items' in results:
+                return [
+                    {
+                        "title": item['title'],
+                        "link": item['link'],
+                        "snippet": item['snippet']
+                    }
+                    for item in results['items']
+                ]
+            else:
+                return [{"error": "No results found."}]
+        except Exception as e:
+            return [{"error": f"An error occurred: {str(e)}"}]
 
 class Web_Agent_Tool(BaseTool):
     require_llm_engine = True
@@ -107,7 +107,7 @@ class Web_Agent_Tool(BaseTool):
         self.llm_engine.stop = ["</answer>", "</search>", "</search>\n", "</search>\n\n"]
         self.tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen2.5-7B-Instruct")  
         self.turn = 2 
-        self.google_tool = Google_Search_Tool() 
+        self.google_tool = Google_Search() 
 
     def parse_query(self, content):
         pattern = re.compile(r"<search>(.*?)</search>", re.DOTALL)
@@ -133,7 +133,7 @@ class Web_Agent_Tool(BaseTool):
         if not self.llm_engine:
             return "Error: LLM engine not initialized. Please provide a valid model_string."
         try:        
-            user_prompt = REASONING_PREFIX + f" {prompt}\n"
+            user_prompt = REASONING_SUMMARY_PREFIX + f" {prompt}\n"
             messages = [
                 {"role": "user", "content": user_prompt},
             ]
@@ -161,8 +161,9 @@ class Web_Agent_Tool(BaseTool):
                     messages.append({"role": "tool", "content": f"<information>{result}</information>"})
             print("Whole messages \n", messages)
             response = self.tokenizer.apply_chat_template(messages, add_generation_prompt=False, tokenize=False)
-            answer = response
-            # answer = self.parse_answer(response)
+            # answer = response
+            answer = self.parse_answer(response)
+            print("[DEBUG] Return Response: ", answer)
             return answer if answer else "No results found."
 
         except Exception as e:
@@ -188,7 +189,7 @@ if __name__ == "__main__":
     script_dir = os.path.dirname(os.path.abspath(__file__))
 
     # Example usage of the Web_Agent_Tool
-    tool = Web_Agent_Tool()
+    tool = Web_Agent_Tool("Qwen/Qwen2.5-7B-Instruct")
 
     # Get tool metadata
     metadata = tool.get_metadata()
@@ -217,3 +218,7 @@ if __name__ == "__main__":
             print(f"Execution failed: {e}")
 
     print("\nDone!")
+
+""" 
+python octotools/tools/web_agent/tool.py
+"""

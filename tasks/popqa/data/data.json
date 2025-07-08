@@ -1,0 +1,1202 @@
+[
+    {
+        "query":"Who was the producer of The Big Show?",
+        "image":null,
+        "answer":"Hal Roach",
+        "pid":0
+    },
+    {
+        "query":"Who was the director of Youth?",
+        "image":null,
+        "answer":"Vincent Selva",
+        "pid":1
+    },
+    {
+        "query":"Who was the director of The Dream?",
+        "image":null,
+        "answer":"Pieter Verhoeff",
+        "pid":2
+    },
+    {
+        "query":"Who was the screenwriter for One Life?",
+        "image":null,
+        "answer":"Alexandre Astruc",
+        "pid":3
+    },
+    {
+        "query":"Who was the producer of The Piano?",
+        "image":null,
+        "answer":"Jan Chapman",
+        "pid":4
+    },
+    {
+        "query":"Who was the screenwriter for Television?",
+        "image":null,
+        "answer":"Mostofa Sarwar Farooki",
+        "pid":5
+    },
+    {
+        "query":"Who was the director of Album?",
+        "image":null,
+        "answer":"Vasanthabalan",
+        "pid":6
+    },
+    {
+        "query":"Who was the producer of Wanted?",
+        "image":null,
+        "answer":"Mark Millar",
+        "pid":7
+    },
+    {
+        "query":"Who was the screenwriter for Men and Women?",
+        "image":null,
+        "answer":"Walter Hugo Khouri",
+        "pid":8
+    },
+    {
+        "query":"Who was the screenwriter for 3?",
+        "image":null,
+        "answer":"Glen Morgan",
+        "pid":9
+    },
+    {
+        "query":"Who is the author of U and I?",
+        "image":null,
+        "answer":"Nicholson Baker",
+        "pid":10
+    },
+    {
+        "query":"Who was the director of Left Behind?",
+        "image":null,
+        "answer":"Vic Sarin",
+        "pid":11
+    },
+    {
+        "query":"Who was the director of The Incident?",
+        "image":null,
+        "answer":"Jack Bender",
+        "pid":12
+    },
+    {
+        "query":"Who was the director of The Stand Up?",
+        "image":null,
+        "answer":"David Wexler",
+        "pid":13
+    },
+    {
+        "query":"Who was the producer of Highway?",
+        "image":null,
+        "answer":"Prem Prakash",
+        "pid":14
+    },
+    {
+        "query":"Who is the author of Persuasion?",
+        "image":null,
+        "answer":"Jane Austen",
+        "pid":15
+    },
+    {
+        "query":"Who is the author of Blake?",
+        "image":null,
+        "answer":"Elliott Hayes",
+        "pid":16
+    },
+    {
+        "query":"Who is the author of The Island?",
+        "image":null,
+        "answer":"Victoria Hislop",
+        "pid":17
+    },
+    {
+        "query":"In what city was Cooper Smeaton born?",
+        "image":null,
+        "answer":"Carleton Place",
+        "pid":18
+    },
+    {
+        "query":"Who is the father of Tammam Salam?",
+        "image":null,
+        "answer":"Saeb Salam",
+        "pid":19
+    },
+    {
+        "query":"Who was the screenwriter for Tiny?",
+        "image":null,
+        "answer":"Kalinda Vazquez",
+        "pid":20
+    },
+    {
+        "query":"Who was the director of Marked for Murder?",
+        "image":null,
+        "answer":"Elmer Clifton",
+        "pid":21
+    },
+    {
+        "query":"Who is the author of Eagle?",
+        "image":null,
+        "answer":"Frank Hampson",
+        "pid":22
+    },
+    {
+        "query":"Who was the director of The First Time?",
+        "image":null,
+        "answer":"Yan Han",
+        "pid":23
+    },
+    {
+        "query":"In what city was Joe English born?",
+        "image":null,
+        "answer":"Newtownabbey",
+        "pid":24
+    },
+    {
+        "query":"What is Cecil Aldin's occupation?",
+        "image":null,
+        "answer":"illustrator",
+        "pid":25
+    },
+    {
+        "query":"Who was the director of Ormai \u00e8 fatta!?",
+        "image":null,
+        "answer":"Enzo Monteleone",
+        "pid":26
+    },
+    {
+        "query":"Who was the composer of The Robe?",
+        "image":null,
+        "answer":"Alfred Newman",
+        "pid":27
+    },
+    {
+        "query":"Who is the father of John Donkin?",
+        "image":null,
+        "answer":"Bryan Donkin",
+        "pid":28
+    },
+    {
+        "query":"Who was the screenwriter for The Best Offer?",
+        "image":null,
+        "answer":"Giuseppe Tornatore",
+        "pid":29
+    },
+    {
+        "query":"What is the capital of Lesotho?",
+        "image":null,
+        "answer":"Maseru",
+        "pid":30
+    },
+    {
+        "query":"Who was the director of The King?",
+        "image":null,
+        "answer":"Shaji Kailas",
+        "pid":31
+    },
+    {
+        "query":"Who was the producer of Ghost?",
+        "image":null,
+        "answer":"Hossein Shahabi",
+        "pid":32
+    },
+    {
+        "query":"Who was the composer of Magic of Love?",
+        "image":null,
+        "answer":"Yasutaka Nakata",
+        "pid":33
+    },
+    {
+        "query":"Who was the director of Hilde Warren und der Tod?",
+        "image":null,
+        "answer":"Joe May",
+        "pid":34
+    },
+    {
+        "query":"Who was the screenwriter for The Trial?",
+        "image":null,
+        "answer":"Harold Pinter",
+        "pid":35
+    },
+    {
+        "query":"Who was the screenwriter for The Heat?",
+        "image":null,
+        "answer":"Katie Dippold",
+        "pid":36
+    },
+    {
+        "query":"Who was the director of The Debt?",
+        "image":null,
+        "answer":"Mahmoud Shoolizadeh",
+        "pid":37
+    },
+    {
+        "query":"Who was the screenwriter for Tape?",
+        "image":null,
+        "answer":"Stephen Belber",
+        "pid":38
+    },
+    {
+        "query":"What is Sven Alkalaj's occupation?",
+        "image":null,
+        "answer":"diplomat",
+        "pid":39
+    },
+    {
+        "query":"Who is the father of Helen of Troy?",
+        "image":null,
+        "answer":"Zeus",
+        "pid":40
+    },
+    {
+        "query":"What genre is The Crimson Kimono?",
+        "image":null,
+        "answer":"film noir",
+        "pid":41
+    },
+    {
+        "query":"Who is the mother of Margaret I of Denmark?",
+        "image":null,
+        "answer":"Helvig of Schleswig",
+        "pid":42
+    },
+    {
+        "query":"Who is the author of The Black Dahlia?",
+        "image":null,
+        "answer":"James Ellroy",
+        "pid":43
+    },
+    {
+        "query":"Who was the screenwriter for Blast?",
+        "image":null,
+        "answer":"Steven E. de Souza",
+        "pid":44
+    },
+    {
+        "query":"Who is the author of Little Things?",
+        "image":null,
+        "answer":"Raymond Carver",
+        "pid":45
+    },
+    {
+        "query":"Who was the producer of Angel?",
+        "image":null,
+        "answer":"Ernst Lubitsch",
+        "pid":46
+    },
+    {
+        "query":"Who was the screenwriter for Two?",
+        "image":null,
+        "answer":"Werner Schroeter",
+        "pid":47
+    },
+    {
+        "query":"In what city was Charles Plumer born?",
+        "image":null,
+        "answer":"Canons Park",
+        "pid":48
+    },
+    {
+        "query":"Who is the author of Island?",
+        "image":null,
+        "answer":"Alistair MacLeod",
+        "pid":49
+    },
+    {
+        "query":"Who was the director of Bobby?",
+        "image":null,
+        "answer":"Emilio Est\u00e9vez",
+        "pid":50
+    },
+    {
+        "query":"Who was the screenwriter for The Stag?",
+        "image":null,
+        "answer":"Peter McDonald",
+        "pid":51
+    },
+    {
+        "query":"Who was the screenwriter for Benaam?",
+        "image":null,
+        "answer":"Narendra Bedi",
+        "pid":52
+    },
+    {
+        "query":"Who was the producer of Young Adult?",
+        "image":null,
+        "answer":"Diablo Cody",
+        "pid":53
+    },
+    {
+        "query":"Who was the director of Pilot?",
+        "image":null,
+        "answer":"Mark Mylod",
+        "pid":54
+    },
+    {
+        "query":"Who is the father of Senhime?",
+        "image":null,
+        "answer":"Tokugawa Hidetada",
+        "pid":55
+    },
+    {
+        "query":"In what city was Carlos Nieto born?",
+        "image":null,
+        "answer":"La Plata",
+        "pid":56
+    },
+    {
+        "query":"Who was the director of The Last Stage?",
+        "image":null,
+        "answer":"Wanda Jakubowska",
+        "pid":57
+    },
+    {
+        "query":"Who was the director of FAN?",
+        "image":null,
+        "answer":"Maneesh Sharma",
+        "pid":58
+    },
+    {
+        "query":"Who is the author of The Sun Chemist?",
+        "image":null,
+        "answer":"Lionel Davidson",
+        "pid":59
+    },
+    {
+        "query":"Who is the mother of Queen Marie of Romania?",
+        "image":null,
+        "answer":"Grand Duchess Maria Alexandrovna of Russia",
+        "pid":60
+    },
+    {
+        "query":"What sport does Alexei Ugarov play?",
+        "image":null,
+        "answer":"ice hockey",
+        "pid":61
+    },
+    {
+        "query":"What is the capital of New Brunswick?",
+        "image":null,
+        "answer":"Fredericton",
+        "pid":62
+    },
+    {
+        "query":"Who is the author of Dirt?",
+        "image":null,
+        "answer":"Stuart Woods",
+        "pid":63
+    },
+    {
+        "query":"In what city was Jakob Kaiser born?",
+        "image":null,
+        "answer":"Hammelburg",
+        "pid":64
+    },
+    {
+        "query":"Who is the author of Finder?",
+        "image":null,
+        "answer":"Emma Bull",
+        "pid":65
+    },
+    {
+        "query":"Who was the director of Love?",
+        "image":null,
+        "answer":"Rajendra Singh Babu",
+        "pid":66
+    },
+    {
+        "query":"Who was the producer of Master?",
+        "image":null,
+        "answer":"Allu Aravind",
+        "pid":67
+    },
+    {
+        "query":"Who was the screenwriter for Samson?",
+        "image":null,
+        "answer":"Gianfranco Parolini",
+        "pid":68
+    },
+    {
+        "query":"Who was the producer of Don't Mess with Bill?",
+        "image":null,
+        "answer":"Pen Densham",
+        "pid":69
+    },
+    {
+        "query":"Who was the screenwriter for The End?",
+        "image":null,
+        "answer":"Jerry Belson",
+        "pid":70
+    },
+    {
+        "query":"Who is the father of Nebuchadnezzar II?",
+        "image":null,
+        "answer":"Nabopolassar",
+        "pid":71
+    },
+    {
+        "query":"Who was the director of Erotica?",
+        "image":null,
+        "answer":"Fabien Baron",
+        "pid":72
+    },
+    {
+        "query":"Who was the composer of Beautiful?",
+        "image":null,
+        "answer":"Ratheesh Vegha",
+        "pid":73
+    },
+    {
+        "query":"Who was the screenwriter for Run?",
+        "image":null,
+        "answer":"N. Lingusamy",
+        "pid":74
+    },
+    {
+        "query":"Who is the author of Silence?",
+        "image":null,
+        "answer":"Moira Buffini",
+        "pid":75
+    },
+    {
+        "query":"Who is the author of Platinum Grit?",
+        "image":null,
+        "answer":"Doug Bayne",
+        "pid":76
+    },
+    {
+        "query":"Who was the director of Alice Walker: Beauty in Truth?",
+        "image":null,
+        "answer":"Pratibha Parmar",
+        "pid":77
+    },
+    {
+        "query":"What is the capital of Wu?",
+        "image":null,
+        "answer":"Gusu District",
+        "pid":78
+    },
+    {
+        "query":"Who was the screenwriter for Seed?",
+        "image":null,
+        "answer":"Glen Mazzara",
+        "pid":79
+    },
+    {
+        "query":"Who was the composer of Sint?",
+        "image":null,
+        "answer":"Dick Maas",
+        "pid":80
+    },
+    {
+        "query":"Who was the producer of Skins?",
+        "image":null,
+        "answer":"Chris Clough",
+        "pid":81
+    },
+    {
+        "query":"Who is the author of Damage?",
+        "image":null,
+        "answer":"Josephine Hart",
+        "pid":82
+    },
+    {
+        "query":"Who is the mother of Clarence Peters?",
+        "image":null,
+        "answer":"Clarion Chukwura",
+        "pid":83
+    },
+    {
+        "query":"Who was the producer of Epsilon?",
+        "image":null,
+        "answer":"Rolf de Heer",
+        "pid":84
+    },
+    {
+        "query":"Who is the author of Major?",
+        "image":null,
+        "answer":"Takuya Mitsuda",
+        "pid":85
+    },
+    {
+        "query":"Who was the producer of If Only?",
+        "image":null,
+        "answer":"Jennifer Love Hewitt",
+        "pid":86
+    },
+    {
+        "query":"What is the capital of Likouala Department?",
+        "image":null,
+        "answer":"Impfondo",
+        "pid":87
+    },
+    {
+        "query":"What sport does Cam Brown play?",
+        "image":null,
+        "answer":"ice hockey",
+        "pid":88
+    },
+    {
+        "query":"Who is the author of The Fabulous Furry Freak Brothers?",
+        "image":null,
+        "answer":"Gilbert Shelton",
+        "pid":89
+    },
+    {
+        "query":"Who was the producer of Die goldene Stadt?",
+        "image":null,
+        "answer":"Veit Harlan",
+        "pid":90
+    },
+    {
+        "query":"Who is the author of The Calder Game?",
+        "image":null,
+        "answer":"Blue Balliett",
+        "pid":91
+    },
+    {
+        "query":"Who was the director of Dave?",
+        "image":null,
+        "answer":"Ivan Reitman",
+        "pid":92
+    },
+    {
+        "query":"In what city was Ivan Khomukha born?",
+        "image":null,
+        "answer":"Ipatovo",
+        "pid":93
+    },
+    {
+        "query":"Who was the producer of Sing?",
+        "image":null,
+        "answer":"Craig Zadan",
+        "pid":94
+    },
+    {
+        "query":"Who was the composer of Hero?",
+        "image":null,
+        "answer":"Gopi Sundar",
+        "pid":95
+    },
+    {
+        "query":"Who is the author of Rigged?",
+        "image":null,
+        "answer":"Ben Mezrich",
+        "pid":96
+    },
+    {
+        "query":"Who was the director of Home Base?",
+        "image":null,
+        "answer":"Colin Trevorrow",
+        "pid":97
+    },
+    {
+        "query":"What is the religion of Carlos Duarte Costa?",
+        "image":null,
+        "answer":"Brazilian Catholic Apostolic Church",
+        "pid":98
+    },
+    {
+        "query":"Who is the mother of Amenhotep I?",
+        "image":null,
+        "answer":"Ahmose-Nefertari",
+        "pid":99
+    },
+    {
+        "query":"Who was the director of Echo?",
+        "image":null,
+        "answer":"Hossein Shahabi",
+        "pid":100
+    },
+    {
+        "query":"What sport does VOKO-Irodion play?",
+        "image":null,
+        "answer":"volleyball",
+        "pid":101
+    },
+    {
+        "query":"Who was the screenwriter for The Return?",
+        "image":null,
+        "answer":"Antun Vrdoljak",
+        "pid":102
+    },
+    {
+        "query":"Who is the author of Pen?",
+        "image":null,
+        "answer":"David Marshall Grant",
+        "pid":103
+    },
+    {
+        "query":"Who was the composer of The Promise?",
+        "image":null,
+        "answer":"Debbie Wiseman",
+        "pid":104
+    },
+    {
+        "query":"Who was the producer of Dark Days?",
+        "image":null,
+        "answer":"Marc Singer",
+        "pid":105
+    },
+    {
+        "query":"Who was the director of In Your Hands?",
+        "image":null,
+        "answer":"Peter Del Monte",
+        "pid":106
+    },
+    {
+        "query":"Who was the producer of La Mission?",
+        "image":null,
+        "answer":"Benjamin Bratt",
+        "pid":107
+    },
+    {
+        "query":"What sport does Sol Ky-Ong play?",
+        "image":null,
+        "answer":"judo",
+        "pid":108
+    },
+    {
+        "query":"Who was the screenwriter for First Love?",
+        "image":null,
+        "answer":"Maximilian Schell",
+        "pid":109
+    },
+    {
+        "query":"Who is the father of Came Home?",
+        "image":null,
+        "answer":"Gone West",
+        "pid":110
+    },
+    {
+        "query":"Who was the director of Leaving?",
+        "image":null,
+        "answer":"Catherine Corsini",
+        "pid":111
+    },
+    {
+        "query":"Who is the author of The Zero Game?",
+        "image":null,
+        "answer":"Brad Meltzer",
+        "pid":112
+    },
+    {
+        "query":"In what city was Christos Mitsis born?",
+        "image":null,
+        "answer":"Marousi",
+        "pid":113
+    },
+    {
+        "query":"Who is the author of Ray?",
+        "image":null,
+        "answer":"Akihito Yoshitomi",
+        "pid":114
+    },
+    {
+        "query":"Who was the director of O Sangue?",
+        "image":null,
+        "answer":"Pedro Costa",
+        "pid":115
+    },
+    {
+        "query":"Who was the producer of Cinderella?",
+        "image":null,
+        "answer":"Daniel Frohman",
+        "pid":116
+    },
+    {
+        "query":"Who was the producer of The Net 2.0?",
+        "image":null,
+        "answer":"Rob Cowan",
+        "pid":117
+    },
+    {
+        "query":"Who is the author of Versed?",
+        "image":null,
+        "answer":"Rae Armantrout",
+        "pid":118
+    },
+    {
+        "query":"Who is the author of Pursuit?",
+        "image":null,
+        "answer":"Andy Mangels",
+        "pid":119
+    },
+    {
+        "query":"Who was the director of Dear Diary?",
+        "image":null,
+        "answer":"David Frankel",
+        "pid":120
+    },
+    {
+        "query":"Who was the director of 180?",
+        "image":null,
+        "answer":"Ray Comfort",
+        "pid":121
+    },
+    {
+        "query":"Who was the director of The Driver?",
+        "image":null,
+        "answer":"Walter Hill",
+        "pid":122
+    },
+    {
+        "query":"Who is the author of Junk?",
+        "image":null,
+        "answer":"Melvin Burgess",
+        "pid":123
+    },
+    {
+        "query":"What sport does Italy men's national volleyball team play?",
+        "image":null,
+        "answer":"volleyball",
+        "pid":124
+    },
+    {
+        "query":"Who is the author of The Lab?",
+        "image":null,
+        "answer":"Jack Heath",
+        "pid":125
+    },
+    {
+        "query":"Who was the producer of Fiction?",
+        "image":null,
+        "answer":"Dark Tranquillity",
+        "pid":126
+    },
+    {
+        "query":"Who was the producer of The Running Man?",
+        "image":null,
+        "answer":"Tim Zinnemann",
+        "pid":127
+    },
+    {
+        "query":"In what city was Jaswant Singh of Marwar born?",
+        "image":null,
+        "answer":"Jodhpur",
+        "pid":128
+    },
+    {
+        "query":"Who was the screenwriter for Morning Raga?",
+        "image":null,
+        "answer":"Mahesh Dattani",
+        "pid":129
+    },
+    {
+        "query":"Who was the producer of All Because of You?",
+        "image":null,
+        "answer":"Butch Walker",
+        "pid":130
+    },
+    {
+        "query":"Who was the director of Singapore?",
+        "image":null,
+        "answer":"Shakti Samanta",
+        "pid":131
+    },
+    {
+        "query":"Who was the director of Molon Labe?",
+        "image":null,
+        "answer":"Holly Dale",
+        "pid":132
+    },
+    {
+        "query":"Who was the director of 2010: The Year We Make Contact?",
+        "image":null,
+        "answer":"Peter Hyams",
+        "pid":133
+    },
+    {
+        "query":"Who is the author of Spiral?",
+        "image":null,
+        "answer":"Roderick Gordon",
+        "pid":134
+    },
+    {
+        "query":"What genre is The Morning After?",
+        "image":null,
+        "answer":"mystery film",
+        "pid":135
+    },
+    {
+        "query":"What is the capital of Saudi Arabia?",
+        "image":null,
+        "answer":"Riyadh",
+        "pid":136
+    },
+    {
+        "query":"Who was the composer of Power?",
+        "image":null,
+        "answer":"S. Thaman",
+        "pid":137
+    },
+    {
+        "query":"Who was the director of Crazy?",
+        "image":null,
+        "answer":"Hans-Christian Schmid",
+        "pid":138
+    },
+    {
+        "query":"Who was the director of Weekend War?",
+        "image":null,
+        "answer":"Steven Hilliard Stern",
+        "pid":139
+    },
+    {
+        "query":"Who was the screenwriter for Legion?",
+        "image":null,
+        "answer":"Scott Stewart",
+        "pid":140
+    },
+    {
+        "query":"Who was the director of Noise?",
+        "image":null,
+        "answer":"Matthew Saville",
+        "pid":141
+    },
+    {
+        "query":"Who was the director of Pip?",
+        "image":null,
+        "answer":"Eric Stough",
+        "pid":142
+    },
+    {
+        "query":"Who was the screenwriter for Katie & Emily?",
+        "image":null,
+        "answer":"Bryan Elsley",
+        "pid":143
+    },
+    {
+        "query":"What is the capital of Sucha County?",
+        "image":null,
+        "answer":"Sucha Beskidzka",
+        "pid":144
+    },
+    {
+        "query":"Who is the author of The Singing?",
+        "image":null,
+        "answer":"Alison Croggon",
+        "pid":145
+    },
+    {
+        "query":"Who was the screenwriter for Birthday?",
+        "image":null,
+        "answer":"Mere Smith",
+        "pid":146
+    },
+    {
+        "query":"Who was the director of Annie?",
+        "image":null,
+        "answer":"Will Gluck",
+        "pid":147
+    },
+    {
+        "query":"Who is the mother of Harald Molander?",
+        "image":null,
+        "answer":"Karin Molander",
+        "pid":148
+    },
+    {
+        "query":"In what city was Aina Kusuda born?",
+        "image":null,
+        "answer":"Chiba Prefecture",
+        "pid":149
+    },
+    {
+        "query":"Who is the father of Griffin O'Neal?",
+        "image":null,
+        "answer":"Ryan O'Neal",
+        "pid":150
+    },
+    {
+        "query":"Who is the author of Sex?",
+        "image":null,
+        "answer":"Steven Meisel",
+        "pid":151
+    },
+    {
+        "query":"What is the capital of Puntland?",
+        "image":null,
+        "answer":"Garoowe",
+        "pid":152
+    },
+    {
+        "query":"Who was the director of Halloween?",
+        "image":null,
+        "answer":"Bruce Seth Green",
+        "pid":153
+    },
+    {
+        "query":"Who was the producer of The Well?",
+        "image":null,
+        "answer":"Clarence Greene",
+        "pid":154
+    },
+    {
+        "query":"Who was the screenwriter for Sea Legs?",
+        "image":null,
+        "answer":"George Marion, Jr.",
+        "pid":155
+    },
+    {
+        "query":"What is the capital of Kambarsky District?",
+        "image":null,
+        "answer":"Kambarka",
+        "pid":156
+    },
+    {
+        "query":"What is the capital of Limburg?",
+        "image":null,
+        "answer":"Hasselt",
+        "pid":157
+    },
+    {
+        "query":"Who was the director of Making Angels?",
+        "image":null,
+        "answer":"Charles Beeson",
+        "pid":158
+    },
+    {
+        "query":"In what city was Thomas Seaton Scott born?",
+        "image":null,
+        "answer":"Birkenhead",
+        "pid":159
+    },
+    {
+        "query":"Who is the father of Ballal Sena?",
+        "image":null,
+        "answer":"Vijay Sena",
+        "pid":160
+    },
+    {
+        "query":"Who was the screenwriter for The Omen?",
+        "image":null,
+        "answer":"David Seltzer",
+        "pid":161
+    },
+    {
+        "query":"Who was the director of Compass?",
+        "image":null,
+        "answer":"Michael Katleman",
+        "pid":162
+    },
+    {
+        "query":"Who was the director of Black?",
+        "image":null,
+        "answer":"Sanjay Leela Bhansali",
+        "pid":163
+    },
+    {
+        "query":"Who was the screenwriter for Michael Scott Paper Company?",
+        "image":null,
+        "answer":"Justin Spitzer",
+        "pid":164
+    },
+    {
+        "query":"What sport does Armand Raymond play?",
+        "image":null,
+        "answer":"ice hockey",
+        "pid":165
+    },
+    {
+        "query":"Who was the director of Havoc?",
+        "image":null,
+        "answer":"Barbara Kopple",
+        "pid":166
+    },
+    {
+        "query":"Who was the director of The Nun?",
+        "image":null,
+        "answer":"Jacques Rivette",
+        "pid":167
+    },
+    {
+        "query":"Who was the screenwriter for Point and Shoot?",
+        "image":null,
+        "answer":"Marshall Curry",
+        "pid":168
+    },
+    {
+        "query":"What is the capital of Liberia?",
+        "image":null,
+        "answer":"Monrovia",
+        "pid":169
+    },
+    {
+        "query":"Who was the director of Dig?",
+        "image":null,
+        "answer":"Gideon Raff",
+        "pid":170
+    },
+    {
+        "query":"Who is the father of B\u00e9la IV of Hungary?",
+        "image":null,
+        "answer":"Andrew II of Hungary",
+        "pid":171
+    },
+    {
+        "query":"Who was the director of P?",
+        "image":null,
+        "answer":"Paul Spurrier",
+        "pid":172
+    },
+    {
+        "query":"Who is the author of Genma Taisen?",
+        "image":null,
+        "answer":"Kazumasa Hirai",
+        "pid":173
+    },
+    {
+        "query":"Who was the screenwriter for Milk?",
+        "image":null,
+        "answer":"Dustin Lance Black",
+        "pid":174
+    },
+    {
+        "query":"Who was the producer of Red?",
+        "image":null,
+        "answer":"King Crimson",
+        "pid":175
+    },
+    {
+        "query":"Who was the producer of This Island Earth?",
+        "image":null,
+        "answer":"William Alland",
+        "pid":176
+    },
+    {
+        "query":"In what city was Mukhtar Mukhtarov born?",
+        "image":null,
+        "answer":"Lankaran",
+        "pid":177
+    },
+    {
+        "query":"Who was the screenwriter for The Key?",
+        "image":null,
+        "answer":"Tinto Brass",
+        "pid":178
+    },
+    {
+        "query":"Who was the director of The Forest?",
+        "image":null,
+        "answer":"Leonel Vieira",
+        "pid":179
+    },
+    {
+        "query":"What is Tor Aulin's occupation?",
+        "image":null,
+        "answer":"composer",
+        "pid":180
+    },
+    {
+        "query":"What is Dai the capital of?",
+        "image":null,
+        "answer":"Northern Wei",
+        "pid":181
+    },
+    {
+        "query":"Who is the author of 1602: New World?",
+        "image":null,
+        "answer":"Greg Pak",
+        "pid":182
+    },
+    {
+        "query":"Who was the screenwriter for Da?",
+        "image":null,
+        "answer":"Hugh Leonard",
+        "pid":183
+    },
+    {
+        "query":"Who was the screenwriter for Bullet?",
+        "image":null,
+        "answer":"Mickey Rourke",
+        "pid":184
+    },
+    {
+        "query":"Who was the screenwriter for Aks?",
+        "image":null,
+        "answer":"Rakeysh Omprakash Mehra",
+        "pid":185
+    },
+    {
+        "query":"Who is the mother of Phoenix?",
+        "image":null,
+        "answer":"Telephassa",
+        "pid":186
+    },
+    {
+        "query":"Who was the composer of Pizza?",
+        "image":null,
+        "answer":"Santhosh Narayanan",
+        "pid":187
+    },
+    {
+        "query":"Who was the composer of Gimmie Dat?",
+        "image":null,
+        "answer":"Soundz",
+        "pid":188
+    },
+    {
+        "query":"Who was the screenwriter for The Ax?",
+        "image":null,
+        "answer":"Costa-Gavras",
+        "pid":189
+    },
+    {
+        "query":"Who was the producer of The Profession of Arms?",
+        "image":null,
+        "answer":"Ermanno Olmi",
+        "pid":190
+    },
+    {
+        "query":"Who was the director of Desirable?",
+        "image":null,
+        "answer":"Archie Mayo",
+        "pid":191
+    },
+    {
+        "query":"Who was the director of Crossover?",
+        "image":null,
+        "answer":"John Guillermin",
+        "pid":192
+    },
+    {
+        "query":"What genre is Third Day?",
+        "image":null,
+        "answer":"Christian rock",
+        "pid":193
+    },
+    {
+        "query":"What is the capital of Duchy of Amalfi?",
+        "image":null,
+        "answer":"Amalfi",
+        "pid":194
+    },
+    {
+        "query":"Who was the screenwriter for Malicious?",
+        "image":null,
+        "answer":"Salvatore Samperi",
+        "pid":195
+    },
+    {
+        "query":"Who is the author of Ceremony?",
+        "image":null,
+        "answer":"Leslie Marmon Silko",
+        "pid":196
+    },
+    {
+        "query":"Who was the director of Five Dollars a Day?",
+        "image":null,
+        "answer":"Nigel Cole",
+        "pid":197
+    },
+    {
+        "query":"Who was the screenwriter for The High Life?",
+        "image":null,
+        "answer":"Julien Duvivier",
+        "pid":198
+    },
+    {
+        "query":"Who was the director of Sagina?",
+        "image":null,
+        "answer":"Tapan Sinha",
+        "pid":199
+    }
+]

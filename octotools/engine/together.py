@@ -51,7 +51,7 @@ class ChatTogether(EngineLM, CachedEngine):
 
         if os.getenv("TOGETHER_API_KEY") is None:
             raise ValueError("Please set the TOGETHER_API_KEY environment variable if you'd like to use OpenAI models.")
-        
+        print(f"Using Together {self.model_string} backend")
         self.client = Together(
             api_key=os.getenv("TOGETHER_API_KEY"),
         )

@@ -412,3 +412,80 @@ We are also looking forward to your feedback and suggestions!
     ↑ Back to Top ↑
   </a>
 </p>
+
+# OpenAI API 请求示例
+
+这个项目包含了几个使用 OpenAI API 的简单示例。
+
+## 安装依赖
+
+```bash
+pip install openai
+```
+
+## 使用方法
+
+### 1. 最简单的示例 (`simple_openai_example.py`)
+
+```python
+from openai import OpenAI
+
+# 创建客户端
+client = OpenAI(api_key="your-api-key-here")
+
+# 发送请求
+response = client.chat.completions.create(
+    model="gpt-3.5-turbo",
+    messages=[
+        {"role": "user", "content": "你好，请介绍一下你自己。"}
+    ]
+)
+
+# 获取回复
+reply = response.choices[0].message.content
+print("AI 回复:", reply)
+```
+
+### 2. 完整示例 (`openai_api_example.py`)
+
+这个文件包含了四种不同的使用方式：
+
+1. **使用 openai 库** - 传统方式
+2. **使用 OpenAI 客户端类** - 推荐方式
+3. **流式响应** - 实时获取回复
+4. **自定义 base_url** - 适用于其他兼容 API
+
+## 重要参数说明
+
+- `model`: 模型名称（如 "gpt-3.5-turbo", "gpt-4"）
+- `messages`: 对话历史，包含角色和内容
+- `temperature`: 创造性程度（0-1，越高越有创意）
+- `max_tokens`: 最大生成令牌数
+- `stream`: 是否使用流式响应
+
+## 获取 API 密钥
+
+1. 访问 [OpenAI 官网](https://platform.openai.com/)
+2. 注册并登录账户
+3. 在 API Keys 页面创建新的密钥
+4. 将密钥替换代码中的 "your-api-key-here"
+
+## 注意事项
+
+- 请妥善保管你的 API 密钥，不要提交到代码仓库
+- 建议使用环境变量来存储 API 密钥
+- 注意 API 调用次数和费用限制
+
+## 环境变量方式
+
+```python
+import os
+from openai import OpenAI
+
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+```
+
+然后在环境变量中设置：
+```bash
+export OPENAI_API_KEY="your-actual-api-key"
+```

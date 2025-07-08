@@ -49,7 +49,7 @@ class ChatActionVLLM(EngineLM, CachedEngine):
         print(f"Using Action VLLM {self.model_string} backend")
         try:
             self.client = OpenAI(
-                base_url="http://localhost:8000/v1",
+                base_url="http://localhost:8001/v1", # TODO: use parameter
                 api_key="dummy-token",
             )
         except Exception as e:
