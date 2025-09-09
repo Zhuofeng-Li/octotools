@@ -5,6 +5,8 @@
 <img src="https://raw.githubusercontent.com/octotools/octotools/refs/heads/main/assets/octotools.svg" alt="OctoTools Logo" width="100">
 </div>
 
+# This is the wrong version. You can just use tools in codes
+
 # OctoTools: An Agentic Framework with Extensible Tools for Complex Reasoning
 
 
